@@ -1,0 +1,11 @@
+apiVersion: kpt.dev/v1alpha1
+kind: Kptfile
+metadata:
+  name: pull-request
+upstream:
+  type: git
+  git:
+    commit: f6b4174a182746e83ed9df77f1026b932d6d18e6
+    repo: https://github.com/tektoncd/catalog
+    directory: /task/pull-request/0.1
+    ref: main

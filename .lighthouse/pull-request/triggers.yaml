@@ -1,0 +1,22 @@
+apiVersion: config.lighthouse.jenkins-x.io/v1alpha1
+kind: TriggerConfig
+metadata:
+  creationTimestamp: null
+  name: triggers
+spec:
+  postsubmits:
+  - agent: tekton-pipeline
+    branches:
+    - main
+    - master
+    context: pull-request
+    name: pull-request
+    source: pull-request.yaml
+  presubmits:
+  - agent: tekton-pipeline
+    always_run: true
+    context: pull-request
+    name: pull-request
+    rerun_command: /pull-request
+    source: pull-request.yaml
+    trigger: (?m)^/pull-request?(s+|$)
